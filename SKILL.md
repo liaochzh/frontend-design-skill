@@ -1,14 +1,14 @@
 ---
 name: frontend-design
 description: 高质量 Web 前端视觉设计。新建或重塑 Web UI、页面、组件、落地页、仪表盘、海报素材、样式美化视觉提升时用。强调独特艺术方向、字体排印与签名元素，拒绝模板化 AI 风。仅做视觉层；不用于从零产品的 PRD→原型全流程（用 product-prototype-generation，全局可用）、不用于无障碍专项审计（用 accessibility）、不用于 App 端视觉设计（用 app-design）。
-license: MIT-0
+license: MIT
 metadata:
-  version: "2.2.0"
+  version: "2.2.1"
   platforms: "web"
-  last-updated: "2026-10-27"
+  last-updated: "2026-10-28"
 ---
 
-# Frontend Design V2.2.0（Web 端）
+# Frontend Design V2.2.1（Web 端）
 
 ## 触发条件
 - 用户要求**重塑/美化/去模板化**现有 Web UI：页面、组件、落地页、仪表盘、海报、React 组件、HTML/CSS 布局
@@ -17,7 +17,7 @@ metadata:
 - **不接 PRD 流水线、后端、部署**；从零产品想法→PRD→原型流水线 → 用 `product-prototype-generation`
 
 ## 哲学层引用（开工前必读者）
-- **执行本 Skill 前，先读取 `~/.config/opencode/design-spec/design-spec/references/ui-design-philosophy.md`**，获取设计立场、设计原则、两遍工作法、通用自检清单、输出模板与纪律。
+- **执行本 Skill 前，先读取 `~/.config/opencode/design-spec/references/ui-design-philosophy.md`**，获取设计立场、设计原则、两遍工作法、通用自检清单、输出模板与纪律。
 - 本文件只负责 **Web 平台实现层**，哲学层内容不在此重复。
 - 涉及 AI 生成 / 改写内容的界面，另读哲学层 §交互规范 · 生成式 AI 交互基线（跨端，Web 同样适用）。
 
@@ -132,7 +132,8 @@ p, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; }
 - `用这套文案做一张 Web 海报，移动端也要好看` → 海报式 Hero+大字型，375px 自检
 
 ## 维护说明
-- 版本：2.2.0（2026-10-27），哲学层共享 `design-spec/references/ui-design-philosophy.md`（配套 v2.5.0）
+- 版本：2.2.1（2026-10-28），哲学层共享 `design-spec/references/ui-design-philosophy.md`（配套 v2.5.0）
+- v2.2.1：修正 L1 哲学层指针双前缀（`design-spec/design-spec/references/` → `design-spec/references/`，原指向不存在路径）；许可证 MIT-0 → MIT；**判据未动**，锚不变 v2.5.0
 - v2.2.0：新增 5 节（令牌源与布局原语 / 组件类单一来源 / 多页骨架与跨页不变量 / 页面衔接 / 兼容基线与降级）+ 自检 5 行；L1 补 5 章路由；配套哲学层 v2.5.0
 - v2.1.15：L1「新建界面」分支补性能预算 + 表单与校验路由（T13 收口）；配套哲学层 v2.4.14（路由修正，无新阈值）
 - v2.1.14：质量自检 +2 行（表单错误文本定位 / 表单标签）；L1 括注补表单与校验；配套哲学层 v2.4.14
