@@ -3,12 +3,12 @@ name: frontend-design
 description: 高质量 Web 前端视觉设计。新建或重塑 Web UI、页面、组件、落地页、仪表盘、海报素材、样式美化视觉提升时用。强调独特艺术方向、字体排印与签名元素，拒绝模板化 AI 风。仅做视觉层；不用于从零产品的 PRD→原型全流程（用 product-prototype-generation，全局可用）、不用于无障碍专项审计（用 accessibility）、不用于 App 端视觉设计（用 app-design）。
 license: MIT
 metadata:
-  version: "2.2.1"
+  version: "2.3.1"
   platforms: "web"
-  last-updated: "2026-10-28"
+  last-updated: "2026-11-10"
 ---
 
-# Frontend Design V2.2.1（Web 端）
+# Frontend Design V2.3.1（Web 端）
 
 ## 触发条件
 - 用户要求**重塑/美化/去模板化**现有 Web UI：页面、组件、落地页、仪表盘、海报、React 组件、HTML/CSS 布局
@@ -30,6 +30,7 @@ metadata:
 - 能推断直接采用，不要追问：主题/受众/任务、技术栈（有代码跟随项目栈，无则单文件 HTML+CSS+JS）、交付形态（单页/组件/海报）。
 - 仅当缺失会显著跑偏时追问 1 个最关键的（如：目标用户是谁 / 要保留现有品牌色吗）。
 - 推断假设在最终交付开头 `假设` 一行显式标注。
+- **步骤-1（先定标准单）**：`<WORKSPACE>` = 项目根；已有 `<WORKSPACE>/docs/design-standard.md` 直接引用；没有则先出单再画页，标准单字段见哲学层 §两遍工作法第一遍。
 
 ## Web 实现层
 
@@ -62,6 +63,9 @@ p, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; }
 - 语义固定写法：表单 → 字段组 + 可见标签；选项集 → 分段控件或单选组；危险操作 → 确认对话框；空数据 → 空态 + 下一步动作。
 - 组件类内部不得出现字面色值 / 像素值（全部 `var(--…)`）。
 
+### 按钮位
+- 主 CTA 唯一常驻（无主操作页记“本页无主 CTA”），层级首选位序/间距/字号，tint/高度按硬规则；命中区不改。
+
 ### 多页骨架与跨页不变量
 - 多页产物共用一个 layout 片段（服务端 include / 模板 / 组件），`header`/`main`/`footer` 的结构与类名逐页一致，不复制粘贴改写。
 - 槽位固定：header 高度、页面 `--layout-gutter`、footer 结构只定义一次。
@@ -78,6 +82,7 @@ p, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; }
 - 能力上限：MDN Baseline `widely available`；新特性只在 `@supports` 内使用并留退路；`limited` 不得作唯一路径。
 - 红旗清单（每项写退路）：裸 `100vh` 定高（改 `dvh`/`svh`）；输入字号 <16px（iOS 聚焦缩放）；`backdrop-filter` 缺 `-webkit-` 前缀；缺 `viewport-fit=cover` + `env(safe-area-inset-*)`；`text-box-trim`（Baseline 2026 新增，2026-10 核读，仅增强）；滚动容器内 sticky；未设 `overscroll-behavior`。
 - 交付贴验证矩阵：320/360/390/430/768/1024/1440 × Safari(iOS)/Chrome(Android)/桌面三引擎；未测写 N/A + 理由。
+- 平板 / 多窗口：组件级断点用**容器查询**（`@container`），不用 UA / `screen.width` / 方向分支；窗口宽是**范围不是承诺**（1/3–2/3 分屏、自由窗口、外接显示器），窄窗下主操作不被遮挡、无横滚；平板**加列/加信息**，不把手机稿等比放大或只做居中留白。矩阵补平板横竖与分屏两行（多形态单独列，不只测整屏）。
 
 ### Web 俗套表（唯一权威源：哲学层 §俗套校准表 段内首个「### Web」）
 条目清单、逐条特征、适用条件与 **禁用** 判定全在权威源，本节不重复、**不得据本节判定**。
@@ -118,6 +123,10 @@ p, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; }
 - [ ] 可选自动化：任一 HTML/CSS lint（`html-validate` / `stylelint`）通过即加分；Lighthouse 需配置 budget.json 与目标 URL
 - [ ] Web 淘汰闸门：见哲学层 §交付闸门 ›「### Web 淘汰闸门」（11 项；无 Brief 依据时命中即淘汰，Brief 点名则按 §俗套校准表 放行）
 - [ ] AI：涉及生成式 AI 的界面已过哲学层 §交互规范 · 生成式 AI 交互基线（标识 / 可编辑·撤销·重试 / 不可逆先确认 / 不确定标注 / 等待 / 多版本 / 隐私）；无 AI 功能则跳过
+- [ ] 标准单：项目标准单存在且全页同值，色号/字号/控件档未超单
+- [ ] 按钮位：主 CTA 唯一常驻，层级按位序/间距/字号（tint/高度按硬规则）
+- [ ] 布局消费小节 no-op：布局原语/容器两值/返回恢复/布局模式已存在保留，仅新增按钮位一行并指向该节
+- [ ] 图标/插图：按哲学层风格生成分支（白名单生成/黑名单固定/角色级回退），16px 三判据见哲学层 §图标规范·风格生成分支
 
 ## 与其他 Skill 边界
 - 要走 `PRD→模板渲染` 流水线（电商/SaaS 原型、移动端/PC 端多页）→ 用 `product-prototype-generation`。
@@ -132,7 +141,11 @@ p, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; }
 - `用这套文案做一张 Web 海报，移动端也要好看` → 海报式 Hero+大字型，375px 自检
 
 ## 维护说明
-- 版本：2.2.1（2026-10-28），哲学层共享 `design-spec/references/ui-design-philosophy.md`（配套 v2.5.0）
+- 版本：2.3.1（2026-11-10），哲学层共享 `design-spec/references/ui-design-philosophy.md`（配套 v2.8.0）
+- v2.3.1：§兼容基线与降级 +1 条（平板/多窗口：容器查询断点、窗口宽是范围、加列不加倍、矩阵补平板与分屏）；同步哲学层 v2.8.0（Android 16 强制自适应、iPadOS 26 自由窗口）
+- v2.3.0：标准单前置（步骤-1）+ 图标/插图风格生成分支 + 布局消费 no-op 声明 + 按钮位；配套哲学层 v2.7.0
+- v2.2.3：同步哲学层 v2.6.1（兼容基线：`dvh`/`svh` 已 widely available、`animation-timeline` 升 Baseline 2026 newly available；红旗清单措辞不变——「裸 `100vh` → 改 `dvh`/`svh`」结论保留；仅同步锚）
+- v2.2.2：同步哲学层 v2.6.0（`俗套校准表 · Web` 的「渐变光晕 Aurora」特征列扩张，本文件为指针故判据未动，仅同步锚）；锚 v2.6.0
 - v2.2.1：修正 L1 哲学层指针双前缀（`design-spec/design-spec/references/` → `design-spec/references/`，原指向不存在路径）；许可证 MIT-0 → MIT；**判据未动**，锚不变 v2.5.0
 - v2.2.0：新增 5 节（令牌源与布局原语 / 组件类单一来源 / 多页骨架与跨页不变量 / 页面衔接 / 兼容基线与降级）+ 自检 5 行；L1 补 5 章路由；配套哲学层 v2.5.0
 - v2.1.15：L1「新建界面」分支补性能预算 + 表单与校验路由（T13 收口）；配套哲学层 v2.4.14（路由修正，无新阈值）
